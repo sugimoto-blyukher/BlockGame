@@ -22,10 +22,21 @@ void drawStartScene() {
     fill(255);
 
     if (m == 100 || keyPressed) {
+        captureCam();
         startGame();
     }
 
-    text("GERMAN",width/4,height/4);
+    // 撮影される領域を赤線で囲う
+    int cropSize = 500;
+    int startX = (width - cropSize) / 2;
+    int startY = (height - cropSize) / 2;
+    stroke(255, 0, 0);
+    strokeWeight(3);
+    noFill();
+    rect(startX, startY, cropSize, cropSize);
+    noStroke();
+
+    text("GERMAN", width/4, height/4);
 
     text("GAME START(to press any keys)", width / 2, height / 2);
 }

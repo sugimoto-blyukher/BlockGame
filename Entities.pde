@@ -8,6 +8,7 @@ class Building {
         this.w = w;
         this.h = h;
         this.d = d;
+        
     }
 
     void update() {
@@ -42,11 +43,20 @@ class Building {
 
 class Enemy {
     float x, y, z;
-
+    PImage texture;
+    /*
     Enemy(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
+        this.texture = null;
+    }
+    */
+    Enemy(float x, float y, float z, PImage texture) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.texture = texture;
     }
 
     void update() {
@@ -56,18 +66,58 @@ class Enemy {
     void display() {
         pushMatrix();
         translate(x, y, z);
-        rotateY(PI);
-        fill(255, 0, 0);
-        box(20, 10, 60);
-        pushMatrix();
-        translate(0, 2, 10);
-        box(80, 2, 20);
+        
+        if (texture != null) {
+            texture(this.texture);
+            textureMode(IMAGE);
+            fill(255);
+            drawTexturedBox(400, 400, 400);
+        } else {
+            fill(255, 0, 0);
+            box(400, 400, 400);
+        }
+        
         popMatrix();
-        pushMatrix();
-        translate(0, -5, -25);
-        box(30, 2, 10);
-        popMatrix();
-        popMatrix();
+    }
+    
+    void drawTexturedBox(float w, float h, float d) {
+        float x1 = -w/2, x2 = w/2;
+        float y1 = -h/2, y2 = h/2;
+        float z1 = -d/2, z2 = d/2;
+        
+        beginShape(QUADS);
+        // Front
+        texture(this.texture);
+        vertex(x1, y1, z2, 0, 0);
+        vertex(x2, y1, z2, 500, 0);
+        vertex(x2, y2, z2, 500, 500);
+        vertex(x1, y2, z2, 0, 500);
+        // Back
+        vertex(x2, y1, z1, 0, 0);
+        vertex(x1, y1, z1, 50, 0);
+        vertex(x1, y2, z1, 50, 50);
+        vertex(x2, y2, z1, 0, 50);
+        // Top
+        vertex(x1, y1, z1, 0, 0);
+        vertex(x2, y1, z1, 500, 0);
+        vertex(x2, y1, z2, 500, 500);
+        vertex(x1, y1, z2, 0, 500);
+        // Bottom
+        vertex(x1, y2, z2, 0, 0);
+        vertex(x2, y2, z2, 500, 0);
+        vertex(x2, y2, z1, 500, 500);
+        vertex(x1, y2, z1, 0, 500);
+        // Left
+        vertex(x1, y1, z1, 0, 0);
+        vertex(x1, y1, z2, 500, 0);
+        vertex(x1, y2, z2, 500, 500);
+        vertex(x1, y2, z1, 0, 500);
+        // Right
+        vertex(x2, y1, z2, 0, 0);
+        vertex(x2, y1, z1, 500, 0);
+        vertex(x2, y2, z1, 500, 500);
+        vertex(x2, y2, z2, 0, 500);
+        endShape();
     }
 }
 

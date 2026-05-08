@@ -111,7 +111,7 @@ void drawReticle() {
 
 void spawnEnemyIfNeeded() {
     if (frameCount % 30 == 0) {
-        enemies.add(new Enemy(random(width), random(height), -2000));
+        enemies.add(new Enemy(random(width), random(height), -500, capturedTexture));
     }
 }
 
