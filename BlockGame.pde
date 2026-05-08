@@ -1,14 +1,23 @@
+import processing.video.*;
+
+Capture cam;
+
 void setup() {
     size(1280, 720, P3D);
-    // String[] cameras = Capture.list();
-    // cam = new Capture(this, 1280, 720, cameras[0]);
-    // cam.start();
+    String[] cameras = Capture.list();
+    cam = new Capture(this, 1280, 720, cameras[0]);
+    cam.start();
     // startMovie = new Movie(this, "video.mp4");
     // startMovie.play();
 }
 
 void draw() {
     background(135, 206, 250);
+    if (cam.available()) {
+        cam.read();
+    }
+
+    image(cam, 0,0);
     drawCurrentScene();
 }
 

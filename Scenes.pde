@@ -25,6 +25,8 @@ void drawStartScene() {
         startGame();
     }
 
+    text("GERMAN",width/4,height/4);
+
     text("GAME START(to press any keys)", width / 2, height / 2);
 }
 
