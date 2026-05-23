@@ -18,9 +18,9 @@ jobs:
 
       - name: Download Processing
         run: |
-          curl -L -o processing.tgz https://github.com/processing/processing4/archive/refs/tags/processing-1313-4.5.2.tar.gz
+          curl -L -o processing.tgz https://github.com/processing/processing4/releases/download/processing-1297-4.3.4/processing-4.3.4-linux-x64.tgz
           tar -xzvf processing.tgz
-          echo "$PWD/processing-4.5.2" >> $GITHUB_PATH
+          echo "$PWD/processing-4.3.4" >> $GITHUB_PATH
 
       - name: Build sketch
         run: |
