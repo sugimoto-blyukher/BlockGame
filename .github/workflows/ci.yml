@@ -24,13 +24,13 @@ jobs:
 
       - name: Build sketch
         run: |
-          processing-java --sketch=Dangeons  --output=Dangeons/build --build
+          processing-java --sketch=BlockGame  --output=BlockGame/build --build
 
       - name: Upload outputs (frames, logs, etc.)
         uses: actions/upload-artifact@v4
         with:
           name: outputs
           path: |
-            Dangeons/output/**
-            Dangeons/build/**
+            BlockGame/output/**
+            BlockGame/build/**
           if-no-files-found: warn
