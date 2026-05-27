@@ -19,6 +19,7 @@ void resetGameState() {
 }
 
 void startGame() {
+    background(175,223,228);
     resetGameState();
     scene = SCENE_PLAY;
 }

@@ -1,9 +1,14 @@
 import processing.video.*;
+import processing.serial.*;
 
+Serial port;
 Capture cam;
 PImage capturedTexture;
 
+char command;
+
 void setup() {
+    //port = new Serial(this, "COM3", 115200);
     fullScreen(P3D);
     String[] cameras = Capture.list();
     cam = new Capture(this, displayWidth, displayHeight, cameras[0]);
@@ -35,7 +40,7 @@ void captureCam() {
     int startX = (width - cropSize) / 2;
     int startY = (height - cropSize) / 2;
     capturedTexture = cam.get(startX, startY, cropSize, cropSize);
-    println("Captured texture: " + startX + ", " + startY + ", " + cropSize + "x" + cropSize);
+    //println("Captured texture: " + startX + ", " + startY + ", " + cropSize + "x" + cropSize);
 }
 
 /*

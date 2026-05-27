@@ -1,4 +1,5 @@
 void playGame() {
+    //cam.stop();
     lights();
     drawHud();
     spawnBuildingIfNeeded();
